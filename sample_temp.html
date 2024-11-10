@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem Showoff</title>
+    <style>
+        /* Fun and stylish popup container */
+        #popup-o-matic {
+            display: none;
+            position: fixed;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 50%;
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #add8e6;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            overflow: hidden;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Funny title and close button */
+        #close-the-thing {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #ff6347;
+            border: none;
+            color: white;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 18px;
+        }
+
+        #close-the-thing:hover {
+            background: #ff4500;
+        }
+
+        #pop-up-headline {
+            text-align: center;
+            font-size: 22px;
+            color: #2f4f4f;
+            margin-top: 0;
+        }
+
+        /* Slideshow container */
+        .slideshow-doodads {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+            opacity: 1;
+        }
+
+        /* Individual slide styling */
+        .problem-slide-gizmo {
+            min-width: 100%;
+            padding: 15px;
+            background: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            margin-right: 15px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Stylish dots */
+        .dots-n-dashes {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .dotty {
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #b0c4de;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .dotty.active {
+            background-color: #4682b4;
+        }
+
+        /* Button to trigger the popup */
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #20b2aa;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #3cb371;
+        }
+
+        /* Loading spinner */
+        #loading-spinner {
+            display: none;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Problem Showoff</h1>
+    <button onclick="displayProblemShowoff()">Check out Problems</button>
+
+    <div id="popup-o-matic">
+        <button id="close-the-thing" onclick="closeThePopup()">X</button>
+        <h2 id="pop-up-headline">Here Are Your Problems!</h2>
+        <div id="loading-spinner">
+            <div class="spinner"></div>
+        </div>
+        <div id="slideshow-container" class="slideshow-doodads"></div>
+        <div class="dots-n-dashes" id="dot-container"></div>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        let problemsData = [];
+
+        // Function to fetch and display problems in a slideshow
+        function displayProblemShowoff() {
+            // Show loading spinner
+            document.getElementById('loading-spinner').style.display = 'block';
+
+            // Fetch data from the server
+            fetch('fetch_problems.php')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    problemsData = data;
+                    const slideshowContainer = document.getElementById('slideshow-container');
+                    const dotContainer = document.getElementById('dot-container');
+
+                    if (problemsData.length === 0) {
+                        alert("No problems found.");
+                        document.getElementById('loading-spinner').style.display = 'none';
+                        return;
+                    }
+
+                    // Clear previous content
+                    slideshowContainer.innerHTML = '';
+                    dotContainer.innerHTML = '';
+
+                    // Create the problem slides
+                    problemsData.forEach((problem, index) => {
+                        const slideHtml = `
+                            <div class="problem-slide-gizmo">
+                                <p><strong>Market Type:</strong> ${problem.market_type}</p>
+                                <p><strong>Owner Name:</strong> ${problem.owner_name}</p>
+                                <p><strong>Problem:</strong> ${problem.problem}</p>
+                                <p><strong>Submitted At:</strong> ${problem.created_at}</p>
+                                <button onclick="contactTheOwner('${problem.owner_email}')">Contact Owner</button>
+                            </div>
+                        `;
+                        slideshowContainer.innerHTML += slideHtml;
+
+                        // Create dots for navigation
+                        const dot = document.createElement('span');
+                        dot.classList.add('dotty');
+                        dot.setAttribute('data-slide', index);
+                        dotContainer.appendChild(dot);
+                    });
+
+                    // Hide loading spinner
+                    document.getElementById('loading-spinner').style.display = 'none';
+
+                    // Show the popup
+                    document.getElementById('popup-o-matic').style.display = 'block';
+
+                    // Start the slideshow automatically
+                    startAutoSlide();
+                })
+                .catch(error => {
+                    console.error('Error fetching problems:', error);
+                    alert("An error occurred while fetching problems. Please try again later");
+                    document.getElementById('loading-spinner').style.display = 'none';
+                });
+        }
+
+        // Function to close the popup
+        function closeThePopup() {
+            document.getElementById('popup-o-matic').style.display = 'none';
+        }
+
+        // Function to show the next slide
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % problemsData.length;
+            showSlide(currentSlideIndex);
+        }
+
+        // Function to show the current slide
+        function showSlide(index) {
+            const slideshowContainer = document.getElementById('slideshow-container');
+            const dots = document.getElementsByClassName('dotty');
+            const totalSlides = problemsData.length;
+
+            // Shift the slides
+            slideshowContainer.style.transform = `translateX(-${index * 100}%)`;
+            slideshowContainer.style.opacity = '0';
+            setTimeout(() => {
+                slideshowContainer.style.opacity = '1';
+            }, 0);
+
+            // Update dots
+            Array.from(dots).forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+        }
+
+        // Automatically transition slides every 5 seconds
+        function startAutoSlide() {
+            setInterval(() => {
+                nextSlide();
+            }, 5000); // Change slide every 5 seconds
+        }
+
+        // Placeholder function to contact the problem owner
+        function contactTheOwner(email) {
+            window.location.href = `mailto:${email}`;
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Website</title>
+    <script>
+        function goBack() {
+            window.history.back(); 
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #1f2937;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 0;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #e5e7eb;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .hero-image::before {
+            
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .hero-image::after {
+            
+            position: absolute;
+            top: -20px;
+            right: -40px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #ff4f00;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #e64600;
+        }
+
+        .video-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 60px 0;
+        }
+
+        .video-card {
+            background-color: #2d3748;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .video-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .video-description {
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+            }
+            
+            .video-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <button onclick="goBack()" class="button">Back to Home</button>
+        </nav>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Email Marketing</h1><br>
+                <p>Email marketing is a direct marketing strategy that involves sending emails to prospects and customers. Effective email marketing converts prospects into customers and turns one-time buyers into loyal, raving fans.<br>
+
+                    <strong>Why Email Marketing?</strong><br>
+                    1. Cost-Effective: Email marketing is one of the most cost-effective marketing strategies. It allows businesses to reach a large audience at a relatively low cost.<br>
+                    
+                    2. Targeted and Personalized: Emails can be tailored to the recipient’s preferences and behavior, making it possible to deliver highly relevant content.<br>
+                    
+                    3. Measurable Results: With email marketing, businesses can track open rates, click-through rates, conversion rates, and more, allowing for data-driven decisions.</p>
+                <!-- <a href="#" class="button">Lign Now</a> -->
+            </div>
+            <div class="hero-image">
+                <img src="/email_marketing_main.jpg?height=300&width=400" alt="Marketing illustration" style="max-width: 100%; height: auto;">
+            </div>
+        </section>
+
+        <section class="video-section">
+            <div class="video-card">
+                <div class="video-container">
+                    <!-- Replace with your YouTube video embed code -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/D-zykxVXQDY?si=xouKjEKKlR7IA3Xf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <h2 class="video-title">Key Features of MailerLite</h2>
+                <pre class="video-description">
+        1. Drag & Drop Editor
+            Create stunning emails without any coding skills.
+            User-friendly interface for easy email design.
+
+        2. Email Automation      
+            Set up automated email sequences to nurture leads.
+            Trigger emails based on user actions or specific dates.
+
+        3. Landing Pages
+            Build and publish landing pages to capture leads.
+            Customize pages to match your brand.
+
+        4. Subscriber Management
+            Segment your audience for targeted campaigns.
+            Use custom fields and tagging for better organization.
+
+        5. Analytics and Reporting
+            Track open rates, click rates, and conversions.
+            Gain insights to optimize your email campaigns.
+            
+        </pre>
+            </div>
+
+            <div class="video-card">
+                <div class="video-container">
+                    <!-- Replace with your YouTube video embed code -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/JiHId_rPahU?si=Wm10bompAFAwiHpA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                </div>
+                <h2 class="video-title">Sendinblue: Comprehensive Email Marketing and Automation Platform</h2>
+                <pre class="video-description">Key Features of Sendinblue
+        1. Email Marketing
+            Drag & Drop Editor
+            Personalization
+
+        2. SMS Marketing
+            mobile devices with personalized SMS messages.
+            Schedule SMS messages and automate responses.
+
+        3. Marketing Automation
+            workflows to nurture leads and improve customer engagement.
+            Advanced Segmentation: Target your audience based
+            on their behavior and preferences.</pre>
+            </div>
+        </section>
+        <div style="text-align: center; padding: 40px 0;">
+            <button onclick="goBack()" class="button">Back to Home</button>
+        </div>
+    </div>
+</body>
+</html>
+  

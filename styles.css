@@ -1,0 +1,389 @@
+:root {
+    --primary-color: #CBFF00;
+    --secondary-color: #1C1C1C;
+    --text-color: #333333;
+    --background-color: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: var(--background-color);
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-square {
+    width: 24px;
+    height: 24px;
+    background-color: var(--secondary-color);
+    margin-right: 10px;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.share-button, .cta-button {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.share-button svg, .cta-button svg {
+    margin-left: 10px;
+}
+
+#hero {
+    padding: 80px 0;
+}
+
+#hero .container {
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    flex: 1;
+    padding-right: 40px;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero-image {
+    flex: 1;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.section-title {
+    display: inline-block;
+    background-color: var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin-bottom: 40px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+
+.service-card {
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.service-card.dark {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+}
+
+.service-card img {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+.learn-more {
+    color: inherit;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.learn-more svg {
+    margin-left: 5px;
+}
+
+#make-things-happen {
+    padding: 80px 0;
+}
+
+#make-things-happen .container {
+    display: flex;
+    align-items: center;
+}
+
+#make-things-happen .content {
+    flex: 1;
+    padding-right: 40px;
+}
+
+#make-things-happen .image {
+    flex: 1;
+}
+
+#make-things-happen .image img {
+    max-width: 100%;
+    height: auto;
+}
+
+#case-studies {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    padding: 80px 0;
+}
+
+.case-study-slider {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+
+.case-study {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.case-study.active {
+    opacity: 1;
+}
+
+.case-study img {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.case-study-content {
+    width: 50%;
+    padding: 0 40px;
+}
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--background-color);
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.slider-dot.active {
+    background-color: var(--primary-color);
+}
+
+#startup-process {
+    padding: 80px 0;
+}
+
+.process-step {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.step-number {
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.expand-icon {
+    margin-left: auto;
+}
+
+.step-content {
+    padding: 0 20px 20px;
+    display: none;
+}
+
+.process-step.active .step-content {
+    display: block;
+}
+
+.process-step.active .step-header {
+    background-color: var(--primary-color);
+}
+
+#contact {
+    background-color: #f9f9f9;
+    padding: 80px 0;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+.submit-button {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 100%;
+}
+
+footer {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    text-align: center;
+    padding: 20px 0;
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+    }
+
+    nav {
+        margin-top: 20px;
+    }
+
+    #hero .container, #make-things-happen .container {
+        flex-direction: column;
+    }
+
+    .hero-content, #make-things-happen .content {
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+
+    .case-study {
+        flex-direction: column;
+    }
+
+    .case-study img, .case-study-content {
+        width: 100%;
+    }
+}body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background:#CBFF00; /* A green header */
+    color: rgb(40, 2, 2);
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+/* Unique styles for each page */
+.funding-page {
+    background-color: #f3f5e8; /* Light green background */
+}
+
+.marketing-page {
+    background-color: #f8fee1; /* Light blue background */
+}
+
+.case-studies-page {
+    background-color: #f9fce4; /* Light pink background */
+}
+
+.email-marketing-page {
+    background-color: #f8ffe0; /* Light orange background */
+}
+
+.marketing-tools-page {
+    background-color: #f9fde3; /* Light blue background */
+}
+
+.startups-process-page {
+    background-color: #f6f8e9; /* Light lime background */
+}
+.back-button {
+    background-color: #c2d613; /* Same as your main theme */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.back-button:hover {
+    background-color: #a98d0f;
+    transform: scale(1.05);
+}

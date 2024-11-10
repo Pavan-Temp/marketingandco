@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Iris in Marketing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .rounded-button {
+    background-color: #1a1a24; /* Dark background color */
+    color: #ffffff; 
+    padding: 12px 24px; /* Padding for size */
+    border: none; /* Remove default border */
+    border-radius: 15px; /* Rounded corners */
+    font-size: 16px; /* Text size */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-family: Arial, sans-serif; /* Font style */
+    text-align: center; /* Center-align text */
+    .services {
+            padding: 80px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--light-gray);
+            padding: 32px;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card.dark {
+            background: var(--dark);
+            color: white;
+        }
+
+        .service-card.green {
+            background: var(--neon-green);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 16px;
+        }
+
+}
+
+.rounded-button:hover {
+    background-color: #2a2a34; /* Slightly lighter on hover */
+}
+.problem-form {
+            display: none; 
+            margin: 20px 0;
+        }
+    </style> 
+    
+    <script>
+        function initChatbot() {
+            const script1 = document.createElement('script');
+            script1.src = "https://cdn.botpress.cloud/webchat/v2.2/inject.js";
+            script1.onload = function () {
+                const script2 = document.createElement('script');
+                script2.src = "https://files.bpcontent.cloud/2024/10/26/13/20241026132929-8L6Z8NLM.js";
+                document.body.appendChild(script2);
+            };
+            document.body.appendChild(script1);
+        }
+
+        
+        function showChatbot() {
+            document.getElementById('bp-webchat').style.display = 'block';
+            initChatbot(); 
+        }
+        function showProblemForm() {
+            document.getElementById('problemForm').style.display = 'block';
+        }
+
+           
+    </script>
+    
+</head>
+<body>
+    
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-squares"></div>
+                <img src="Frame 9.png">
+                <span>The life in Marketing</span>
+            </div>
+            <nav>
+                <a href="#services">Services</a>
+                <a href="#case-studies">Case Studies</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact Us</a>
+                <a href="logout.php">Logout</a>
+            </nav>
+            <button class="share-button" onclick="showProblemForm()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                Share my Problem
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Navigating the digital landscape for success</h1><br>
+                    <p>Our platform provides a comprehensive toolkit and resources to help startups succeed, including step-by-step guides, business planning tools, funding options, marketing strategies, and expert mentorship.</p><br>
+                    <button class="cta-button" onclick="showChatbot()">
+                        AI step-by-step guidance
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>    
+                    
+                </div>
+                <div class="hero-image">
+                    <img src="head.png" alt="Digital landscape">
+                </div>
+            </div>
+        </section>
+        <section id="problemForm" class="problem-form">
+    <div class="container">
+        <h2>Share Your Problem</h2>
+        <form id="problemForm" method="POST" action="submit_problem.php">
+            <input type="text" name="name" id="name" placeholder="Your Name" required>
+            <textarea name="problem" id="problem" placeholder="Describe your problem" required></textarea>
+            <button type="submit" class="rounded-button">Submit</button>
+        </form>
+    </div>
+</section>
+
+<script>
+    function Problem() {
+        console.log("Problem function triggered"); 
+
+        const form = document.getElementById('problemForm');
+
+        if (form.checkValidity()) {
+            console.log("Form is valid, preparing to submit");
+            const formData = new FormData(form);
+
+            fetch("submit_problem.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Response received from server:", data); 
+                if (data.success) {
+                    alert(data.message); 
+                    form.reset(); 
+                } else {
+                    alert(data.message); 
+                }
+            })
+            .catch(error => {
+                console.error("Error occurred:", error); 
+                alert("An error occurred. Please try again.");
+            });
+        } else {
+            alert("Please fill in all required fields.");
+        }
+    }
+</script>
+
+        
+
+        
+        
+        
+        
+
+<section class="services" id="services">
+    <div class="section-title">Services</div>
+    <div class="services-grid">
+        <div class="service-card">
+            <img src="https://plus.unsplash.com/premium_photo-1680396766429-ccfb5626a40d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZmluZGluZyUyMGZ1bmRpbmd8ZW58MHx8MHx8fDA%3D" alt="Finding Funding">
+            <h3>Finding Funding</h3>
+            <a href="#">Learn more</a>
+        </div>
+        <div class="service-card green">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bWFya2V0aW5nJTIwdGVjaG5pcXVlc3xlbnwwfHwwfHx8MA%3D%3D" alt="Marketing Technique">
+            <h3>Marketing Technique</h3>
+            <a href="#">Learn more</a>
+        </div>
+        <div class="service-card dark">
+            <img src="https://plus.unsplash.com/premium_photo-1661955247000-b529e946718e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2FzZSUyMHN0dWR5fGVufDB8fDB8fHww" alt="Case Studies">
+            <h3>Case Studies</h3>
+            <a href="#">Learn more</a>
+        </div>
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZW1haWwlMjBtYXJrZXRpbmd8ZW58MHx8MHx8fDA%3D" alt="Email Marketing">
+            <h3>Email Marketing</h3>
+            <a href="#">Learn more</a>
+        </div>
+        <div class="service-card green">
+            <img src="https://images.unsplash.com/photo-1535303311164-664fc9ec6532?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fG1hcmtldGluZyUyMHRvb2xzfGVufDB8fDB8fHww" alt="Marketing Tools">
+            <h3>Marketing Tools</h3>
+            <a href="#">Learn more</a>
+        </div>
+        <div class="service-card dark">
+            <img src="https://media.istockphoto.com/id/1307252605/photo/innovative-idea-in-businessman-hand.jpg?s=2048x2048&w=is&k=20&c=w2zkC23RNDKNCmmcxtjwT-TY30IhPjXmJo4NJDSSsv8=" alt="Startup's Process">
+            <h3>Startup's Process</h3>
+            <a href="#">Learn more</a>
+        </div>
+    </div>
+</section>
+      
+
+        <section id="make-things-happen">
+            <div class="container" style="background-color: aliceblue;width:auto;height:auto; padding: 25px;border-radius: 40px;">
+                <div class="content">
+                    <h2>Let's make things happen</h2><br>
+                    <p>Share your insights and collaborate with fellow entrepreneurs to find effective solutions together.</p><br>
+                    <button class="rounded-button" onclick="showDetails()">Help other entrepreneurs</button>
+                    <div id="submission-details" style="display:none; margin-top: 20px;">
+                        <h3>Submission Details:</h3>
+                        <p id="details-content"></p>
+                    </div>
+                </div>
+                <div class="image">
+                    <img src="https://news.bryant.edu/sites/news/files/2023-11/Entrepreneurship%20connections.jpg" alt="Collaboration">
+                </div>
+            </div>
+        </section>
+        <br>
+        <br>
+        
+
+        <section id="case-studies">
+            <div class="container" style="border-radius: 55px;">
+                <h2 class="section-title">Case Studies</h2>
+                <div class="case-study-slider">
+                    <div class="case-study active">
+                        <img src="airbnb.jpeg" alt="Airbnb">
+                        <div class="case-study-content">
+                            <h3>Airbnb: Steady transformed through our effective strategies</h3>
+                            <p>We helped Airbnb redefine their marketing approach, resulting in a 200% increase in bookings.</p>
+                            <a href="#" class="learn-more">
+                                Learn more
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="case-study">
+                        <img src="download.jpeg" alt="Slack">
+                        <div class="case-study-content">
+                            <h3>Slack: Slack redefined workplace communication with a user-centric approach</h3>
+                            <p>Our strategies helped Slack increase user engagement by 150% within 6 months.</p>
+                            <a href="#" class="learn-more">
+                                Learn more
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="case-study">
+                        <img src="shopify.jpeg" alt="Shopify">
+                        <div class="case-study-content">
+                            <h3>Shopify: Shopify empowered small businesses with accessible e-commerce solutions</h3>
+                            <p>We assisted Shopify in reaching 1 million active stores through targeted marketing campaigns.</p>
+                            <a href="#" class="learn-more">
+                                Learn more
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-dots"></div>
+            </div>
+        </section>
+
+        <section id="startup-process">
+            <div class="container">
+                <h2 class="section-title">Startup's Process</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-header">
+                            <span class="step-number">01</span>
+                            <h3>Ideation and Market Research</h3>
+                            <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </div>
+                        <div class="step-content">
+                            <p>Identify a problem, generate ideas, and research the market to validate demand.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-header">
+                            <span class="step-number">02</span>
+                            <h3>Business Planning</h3>
+                            <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </div>
+                        <div class="step-content">
+                            <p>Develop a comprehensive business plan, including financial projections and marketing strategies.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-header">
+                            <span class="step-number">03</span>
+                            <h3>Legal Structure and Registration</h3>
+                            <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </div>
+                        <div class="step-content">
+                            <p>Choose a legal structure and register your business with the appropriate authorities.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-header">
+                            <span class="step-number">04</span>
+                            <h3>Product Development</h3>
+                            <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </div>
+                        <div class="step-content">
+                            <p>Create a minimum viable product (MVP) and iterate based on user feedback.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-header">
+                            <span class="step-number">05</span>
+                            <h3>Marketing and Brand Building</h3>
+                            <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </div>
+                        <div class="step-content">
+                            <p>Develop your brand identity and implement marketing strategies to reach your target audience.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-header">
+                            <span class="step-number">06</span>
+                            <h3>Launch and Scale</h3>
+                            <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </div>
+                        <div class="step-content">
+                            <p>Launch your product or service and focus on scaling your business operations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>THANKS FOR VISITING</p>
+        </div>
+    </footer>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

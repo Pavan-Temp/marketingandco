@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effective Marketing Techniques for Startups</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: rgb(120, 196, 194);
+            color: #1a202c;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 0;
+            gap: 40px;
+            background-color: rgb(120, 196, 194);
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color:white;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color:white;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #4299e1;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #3182ce;
+        }
+
+        .video-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 60px 0;
+        }
+
+        .video-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .video-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+
+        .video-description {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+            }
+            
+            .video-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+        <script>
+            function goBack() {
+                window.history.back(); 
+            }
+        </script>
+    
+</head>
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <button onclick="goBack()" class="button">Back to Home</button>
+        </nav>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Effective Marketing Techniques for Startups</h1><br>
+                <p>Effective marketing centers around understanding and connecting with the target audience. Brands can do this by building a strong online presence through engaging content and storytelling that resonates emotionally. Leveraging social proof—like reviews, testimonials, and influencer endorsements—boosts credibility and trust. Personalized marketing that tailors offers and content to individual preferences enhances customer satisfaction. Consistent branding across all channels, combined with data-driven strategies, ensures campaigns are relevant and reach the right audience.</p>
+            </div>
+            <div class="hero-image">
+                <img src="/marketing_techniques.jpg?height=300&width=400" alt="Marketing techniques illustration" style="max-width: 100%; height: auto; padding-right:15px; border-radius: 60px;">
+            </div>
+        </section>
+
+        <section class="video-section">
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ZvChhHNTz1g?si=_Ja_l1uwtFP-eQIY&amp;start=7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                </div>
+                <h2 class="video-title">Marketing</h2>
+                <p class="video-description">Marketing strategies have changed, and attention span has decreased. You can't apply the same marketing strategies that you used in 2022 right now. You have to find your way of cracking a new marketing strategy. Therefore, if you're searching for new marketing strategy for small business, or for your startup, then this video is perfect for you.</p>
+            </div>
+
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bilOOPuAvTY?si=728YizJqY9iMBOBz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                </div>
+                <h2 class="video-title">Strategies for Marketing</h2>
+                <p class="video-description">Philip Kotler is the undisputed heavyweight champion of marketing. He's authored or co-authored around 70 books, addressed huge audiences around the world and consulted some of the biggest brands. In this video, he shares his insights with the London Business Forum.London Business Forum offers a programme of fun and insightful events. Presented by some of the world’s most inspired and inspiring people, our events provide a burst of fresh thinking without taking you out of the office for too long.
+                    </p>
+            </div>
+            
+        </section>
+        <div style="text-align: center; padding: 40px 0;">
+            <button onclick="goBack()" class="button">Back to Home</button>
+        </div>
+    </div>
+</body>
+</html>
+
+            
+        

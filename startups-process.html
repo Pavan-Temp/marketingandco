@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Process Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #9b98b1;
+            color: #1a202c;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 0;
+            gap: 40px;
+            background-color:  #9b98b1;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #0b0b0b;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #0b0b0b;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #c22ba6;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #3182ce;
+        }
+
+        .video-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 60px 0;
+        }
+
+        .video-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .video-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+
+        .video-description {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+            }
+            
+            .video-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+       <script>
+        function goBack() {
+            window.history.back(); 
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <a href="#" class="button">Back to Home</a>
+        </nav>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>The Startup Process: From Idea to Launch</h1>
+                <p style="font-size: large;">Starting a business involves a structured journey from idea to launch, with each stage playing a critical role in setting the foundation for long-term success. The process begins with idea generation and validation, where you ensure your concept meets a specific need and has a viable market. Once validated, you develop a business plan outlining your vision, target audience, competitive analysis, and revenue model—essential both as a roadmap and for attracting investors. Next comes building a Minimum Viable Product (MVP), a simplified version of your product that allows you to gather feedback from early adopters and refine your offering based on real customer needs.Securing funding is often necessary, with options ranging from self-funding and crowdfunding to seeking venture capital. A solid business plan and MVP make it easier to attract investment. Building a capable team is equally crucial, as motivated, skilled individuals bring your vision to life and help scale the business. Marketing and branding follow, where you create a memorable brand identity and implement a targeted marketing strategy to build awareness and generate interest. Legal and administrative setup—registering your business, securing licenses, and protecting intellectual property—ensures a compliant foundation for smooth operations.</p>
+            </div>
+            <div class="hero-image">
+                <img src="/startup_process.jpg?height=300&width=400" alt="Startup process illustration" style="max-width: 100%; height: auto; padding-right: 0px;">
+            </div>
+        </section>
+
+        <section class="video-section">
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bNpx7gpSqbY?si=QwSONcaCL2zX4uMv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                </div>
+                <h2 class="video-title">The Lean Startup Methodology</h2>
+                <pre class="video-description">Discover the principles of the Lean Startup methodology and how it can help you build a successful business by validating your ideas quickly and efficiently.</pre>
+            </div>
+
+            </section>
+        <div style="text-align: center; padding: 40px 0;">
+            <a href="#" class="button">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
+
+
+            <button onclick="goBack()" class="back-button">Back</button>
+        </section>
+    </main>
+</body>
+</html>

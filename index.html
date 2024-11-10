@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The life in Marketing</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        :root {
+            --neon-green: #C1FF5D;
+            --dark: #111111;
+            --gray: #666666;
+            --light-gray: #f5f5f5;
+        }
+        .step-content {
+    padding: 0 20px 20px;
+    display: none;
+    background-color: #9b9898;
+}
+
+.process-step.active .step-content {
+    display: block;
+}
+        body {
+            background-color: white;
+            color: var(--dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+        }
+
+        .logo {
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+        }
+
+        .share-btn {
+            border: 1px solid var(--dark);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .hero {
+            padding: 80px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            color: var(--gray);
+            margin-bottom: 32px;
+        }
+
+        .cta-button {
+            background: var(--dark);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .section-title {
+    background: linear-gradient(90deg, #3B82F6, #10B981); /* Gradient background */
+    color: white; /* Text color */
+    display: inline-block;
+    padding: 15px 15px;
+    border-radius: 30px; /* Rounded corners */
+    margin-bottom: 32px;
+    font-family: 'Arial', sans-serif; /* Classic font */
+    font-size: 18px; /* Font size */
+    text-align: center; /* Center text */
+    border: none; /* No border for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: background 0.3s ease, transform 0.2s ease; /* Smooth transition */
+}
+
+.section-title:hover {
+    background: linear-gradient(90deg, #10B981, #3B82F6); /* Change gradient on hover */
+    color: white; /* Text color remains the same */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+        .services {
+            padding: 80px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--light-gray);
+            padding: 32px;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card.dark {
+            background: var(--dark);
+            color: white;
+        }
+
+        .service-card.green {
+            background: rgb(195, 229, 202);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 16px;
+        }
+
+        .case-studies {
+            padding: 2px 0;
+            background: var(--light-gray);
+        }
+
+        .cases-container {
+            background: var(--dark);
+            border-radius: 24px;
+            padding: 32px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            color: white;
+        }
+
+        .startup-process {
+            padding: 80px 0;
+        }
+
+        .process-item {
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            background: white;
+            border: 1px solid #eee;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .process-item.active {
+            background: var(--neon-green);
+        }
+
+        .process-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .process-number {
+            font-weight: bold;
+            margin-right: 16px;
+        }
+
+        .toggle-btn {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .process-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .process-item.active .process-content {
+            max-height: 500px;
+            margin-top: 16px;
+        }
+
+        .process-item.active .toggle-btn {
+            transform: rotate(45deg);
+        }
+
+        .contact {
+            padding-top: 0px 0;
+            padding-bottom: 5px;
+            border-radius: 35px;
+            background: var(--light-gray);
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            margin-top: 8px;
+        }
+
+        .submit-btn {
+            background: var(--dark);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px 0;
+        }
+        #make-things-happen {
+    padding: 80px 0;
+}
+
+#make-things-happen .container {
+    display: flex;
+    align-items: center;
+}
+
+#make-things-happen .content {
+    flex: 1;
+    padding-right: 40px;
+}
+
+#make-things-happen .image {
+    flex: 1;
+}
+
+#make-things-happen .image img {
+    max-width: 100%;
+    height: auto;
+}
+        .rounded-button {
+    background-color: #1a1a24; /* Dark background color */
+    color: #ffffff; 
+    padding: 12px 24px; /* Padding for size */
+    border: none; /* Remove default border */
+    border-radius: 15px; /* Rounded corners */
+    font-size: 16px; /* Text size */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-family: Arial, sans-serif; /* Font style */
+    text-align: center; /* Center-align text */
+        }
+
+.case:hover {
+    transform: scale(1.05);
+    color:rgb(242, 14, 14);
+    box-shadow: 0 8px 16px rgba(45, 23, 53, 0.3);
+}
+#startup-process {
+    padding: 80px 0;
+}
+
+.process-step {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.service-card:hover {
+    transform: scale(0.97);
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.step-number {
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.expand-icon {
+    margin-left: auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-square {
+    width: 24px;
+    height: 24px;
+    background-color: var(--secondary-color);
+    margin-right: 10px;
+}
+
+
+.step-content {
+    padding: 0 20px 20px;
+    display: none;
+}
+
+.process-step.active .step-content {
+    display: block;
+}
+
+.process-step.active .step-header {
+    background-color: var(--primary-color);
+}
+/* Popup panel styles */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    max-width: 80%;
+    position: relative;
+    text-align: left;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Popup overlay styling */
+#popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease;
+    z-index: 1000;
+}
+
+/* Popup content styling */
+.popup-content {
+    background: rgba(255, 255, 255, 0.9); /* Glass effect */
+    backdrop-filter: blur(10px); /* Adds blurriness to background */
+    border-radius: 10px;
+    padding: 20px 30px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    text-align: center;
+    animation: popupFadeIn 0.4s ease;
+}
+
+/* Popup fade-in animation */
+@keyframes popupFadeIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Close button styling */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #ff3333;
+}
+
+/* Form styling */
+.popup-content h2 {
+    margin-bottom: 20px;
+    color: #007BFF;
+    font-size: 24px;
+}
+
+.popup-content form label {
+    display: block;
+    margin-top: 10px;
+    color: #333;
+    font-weight: bold;
+}
+
+.popup-content form input,
+.popup-content form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+.popup-content form input:focus,
+.popup-content form textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Submit button styling */
+.popup-content form button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.popup-content form button:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 6px 12px rgba(0, 123, 255, 0.5);
+}
+#popup-o-matic {
+            display: none;
+            position: fixed;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 50%;
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #add8e6;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            overflow: hidden;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Funny title and close button */
+        #close-the-thing {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #ff6347;
+            border: none;
+            color: white;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 18px;
+        }
+
+        #close-the-thing:hover {
+            background: #ff4500;
+        }
+
+        #pop-up-headline {
+            text-align: center;
+            font-size: 22px;
+            color: #2f4f4f;
+            margin-top: 0;
+        }
+
+        /* Slideshow container */
+        .slideshow-doodads {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+            opacity: 1;
+        }
+
+        /* Individual slide styling */
+        .problem-slide-gizmo {
+            min-width: 100%;
+            padding: 15px;
+            background: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            margin-right: 15px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Stylish dots */
+        .dots-n-dashes {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .dotty {
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #b0c4de;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .dotty.active {
+            background-color: #4682b4;
+        }
+
+        /* Button to trigger the popup */
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #20b2aa;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #3cb371;
+        }
+
+        /* Loading spinner */
+        #loading-spinner {
+            display: none;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #prev-btn {
+            left: -30px;
+        }
+
+        #next-btn {
+            right: -30px;
+        }
+
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    // Case Studies Slider
+    const caseStudies = document.querySelectorAll('.case-study');
+    const sliderDots = document.querySelector('.slider-dots');
+    let currentSlide = 0;
+
+    caseStudies.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('slider-dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        sliderDots.appendChild(dot);
+    });
+
+    function goToSlide(index) {
+        caseStudies[currentSlide].classList.remove('active');
+        sliderDots.children[currentSlide].classList.remove('active');
+        currentSlide = index;
+        caseStudies[currentSlide].classList.add('active');
+        sliderDots.children[currentSlide].classList.add('active');
+    }
+
+    setInterval(() => {
+        goToSlide((currentSlide + 1) % caseStudies.length);
+    }, 5000);
+
+    // Startup Process Accordion
+    const processSteps = document.querySelectorAll('.process-step');
+
+    processSteps.forEach(step => {
+        const header = step.querySelector('.step-header');
+        header.addEventListener('click', () => {
+            step.classList.toggle('active');
+        });
+    });
+
+    // Form Submission (placeholder)
+    const contactForm = document.querySelector('.contact-form');
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Form submitted! (This is a placeholder action)');
+    });
+});
+    </script>
+</head>
+<body>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2024/10/26/13/20241026132929-8L6Z8NLM.js"></script>
+    <script>
+        function openBotpressChat() {
+            function openBotpressChat(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            console.log("Attempting to open Botpress chat...");
+
+            // Check if Botpress WebChat is loaded
+            if (window.botpressWebChat) {
+                console.log("Botpress WebChat detected, sending 'show' event.");
+                window.botpressWebChat.sendEvent({ type: 'show' });
+            } else {
+                console.error("Botpress WebChat not initialized yet.");
+            }
+        }}
+
+// Optional: Retry mechanism to ensure Botpress is loaded
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        if (!window.botpressWebChat) {
+            console.warn("Botpress WebChat still not available after load.");
+        }
+    }, 3000); // Check after 3 seconds
+});
+</script>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <div class="logo-squares"></div>
+                <img src="Frame 9.png">
+                <span>The life in Marketing</span>
+            </div>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#case-studies">Case Studies</a>
+                <a href="#make-things-happen">Help Others</a>
+                <a href="#contact">Contact Us</a>
+                <a href="#" class="share-btn" onclick="openPopup()">Share my Problem</a>
+                <!-- Popup Panel -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <h2>Share Your Problem</h2>
+        <form action="submit_problem.php" method="POST">
+            <label for="market-type">Type of Market</label>
+            <input type="text" id="market-type" name="market_type" required>
+
+            <label for="owner-name" >Email</label>
+            <input type="email" id="owner-name" name="owner_name" placeholder="example@gmail.com" required>
+
+            <label for="problem">Share Your Problem</label>
+            <textarea id="problem" name="problem" placeholder="Some One is ready to help you!" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div>
+                <h1>Navigating the digital landscape for success</h1>
+                <p>Our platform empowers entrepreneurs to start and scale their businesses through essential resources, including step-by-step guides, business planning tools, funding options, marketing strategies, and more.</p>
+                <a href="#" class="cta-button">AI is Here to guide</a>
+            </div>
+            <div class="hero-image">
+                <!-- Megaphone illustration would go here -->
+                <img src="head.png" alt="Digital Marketing Illustration">
+            </div>
+        </section>
+
+        <section class="services" id="services">
+            <div class="section-title">Services</div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://plus.unsplash.com/premium_photo-1680396766429-ccfb5626a40d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZmluZGluZyUyMGZ1bmRpbmd8ZW58MHx8MHx8fDA%3D" alt="Finding Funding">
+                    <h3>Finding Funding</h3>
+                    <a href="finding-funding.html">Learn more</a>
+                </div>
+                <div class="service-card green">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bWFya2V0aW5nJTIwdGVjaG5pcXVlc3xlbnwwfHwwfHx8MA%3D%3D" alt="Marketing Technique">
+                    <h3>Marketing Technique</h3>
+                    <a href="marketing-techniques.html">Learn more</a>
+                </div>
+                <div class="service-card dark">
+                    <img src="https://plus.unsplash.com/premium_photo-1661955247000-b529e946718e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2FzZSUyMHN0dWR5fGVufDB8fDB8fHww" alt="Case Studies">
+                    <h3>Case Studies</h3>
+                    <a href="case-studies.html">Learn more</a>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZW1haWwlMjBtYXJrZXRpbmd8ZW58MHx8MHx8fDA%3D" alt="Email Marketing">
+                    <h3>Email Marketing</h3>
+                    <a href="email-marketing.html">Learn more</a>
+                </div>
+                <div class="service-card green">
+                    <img src="https://images.unsplash.com/photo-1535303311164-664fc9ec6532?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fG1hcmtldGluZyUyMHRvb2xzfGVufDB8fDB8fHww" alt="Marketing Tools">
+                    <h3>Marketing Tools</h3>
+                    <a href="marketing-tools.html">Learn more</a>
+                </div>
+                <div class="service-card dark">
+                    <img src="https://media.istockphoto.com/id/1307252605/photo/innovative-idea-in-businessman-hand.jpg?s=2048x2048&w=is&k=20&c=w2zkC23RNDKNCmmcxtjwT-TY30IhPjXmJo4NJDSSsv8=" alt="Startup's Process">
+                    <h3>Startup's Process</h3>
+                    <a href="startups-process.html">Learn more</a>
+                </div>
+            </div>
+        </section>
+      <!-- Existing section -->
+      <section id="make-things-happen">
+          <div class="container" style="background-color: aliceblue;width:auto;height:auto; padding: 25px;border-radius: 40px;">
+              <div class="content">
+                  <h2>Let's make things happen</h2><br>
+                  <p>Share your insights and collaborate with fellow entrepreneurs to find effective solutions together.</p><br>
+                  <button class="rounded-button" onclick="displayProblemShowoff()">Help other entrepreneurs</button>
+                  <div id="submission-details" style="display:none; margin-top: 20px;">
+                      <h3>Submission Details:</h3>
+                      <p id="details-content"></p>
+                  </div>
+              </div>
+              <div class="image">
+                  <img src="https://news.bryant.edu/sites/news/files/2023-11/Entrepreneurship%20connections.jpg" alt="Collaboration">
+              </div>
+          </div>
+      </section>
+
+
+      <div id="popup-o-matic">
+        <button id="close-the-thing" onclick="closeThePopup()">X</button>
+        <h2 id="pop-up-headline">Here Are Your Problems!</h2>
+        <div id="loading-spinner">
+            <div class="spinner"></div>
+        </div>
+        <div id="slideshow-container" class="slideshow-doodads"></div>
+        <div class="dots-n-dashes" id="dot-container"></div>
+        <div class="nav-buttons">
+            <button onclick="prevSlide()">Prev</button>
+            <button onclick="nextSlide()">Next</button>
+        </div>
+    </div>
+
+      <!-- Popup for Problems -->
+      <div id="pop_problems" class="popup">
+          <div class="popup-content">
+              <span class="close-btn" onclick="closePopup()">&times;</span>
+              <h2>Submitted Problems</h2>
+              <div id="problem-list"></div>
+          </div>
+      </div>
+        <br>
+        <br>
+
+        <section class="case-studies" id="case-studies">
+            <div class="section-title">Case Studies</div>
+            <div class="cases-container">
+                <div class="case">
+                    <h4><h2>Airbnb:</h2> transformed the hospitality industry by introducing a revolutionary business model that turned everyday homes into lodging for travelers worldwide.</h4><br>
+                    <a href="case-studies.html">Learn more →</a>
+                </div>
+                <div class="case">
+                    <h4><h2>Slack:</h2>Slack has transformed workplace communication by creating a centralized, dynamic platform that replaces scattered emails and siloed messaging systems.</h4><br>
+                    <a href="case-studies.html">Learn more →</a>
+                </div>
+                <div class="case">
+                    <h4><h2>Shopify:</h2>Shopify has revolutionized the e-commerce landscape by providing a powerful yet accessible platform for businesses of all sizes to create and manage online stores.</h4><br>
+                    <a href="case-studies.html">Learn more →</a>
+                </div>
+            </div>
+        </section>
+
+       
+        <section id="startup-process">
+            <div class="container">
+                <h2 class="section-title">Startup's Process</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-header">
+                            <span class="step-number">01</span>
+                            <h3>Ideation and Market Research</h3>
+                            <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </div>
+                        <div class="step-content">
+                            <p>Start by identifying a unique idea that solves a problem or meets an unmet need. Through market research, assess demand, target audience preferences, and competitor strategies. This process helps validate your idea, ensuring there’s a viable market before you commit further resources.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-header">
+                            <span class="step-number">02</span>
+                            <h3>Business Planning</h3>
+                            <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </div>
+                        <div class="step-content">
+                            <p>A solid business plan acts as your roadmap, covering your mission, vision, and objectives. Outline your target market, competitive analysis, marketing approach, and revenue model. Financial projections, funding needs, and an operational plan are also crucial, particularly if you plan to seek investors or loans.</p>                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-header">
+                            <span class="step-number">03</span>
+                            <h3>Legal Structure and Registration</h3>
+                            <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </div>
+                        <div class="step-content">
+                            <p>Choose the most suitable legal structure for your business, such as a sole proprietorship, partnership, LLC, or corporation. Register your business, apply for necessary licenses or permits, and protect your intellectual property. This stage establishes your business as a legal entity, ensuring compliance with local laws.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-header">
+                            <span class="step-number">04</span>
+                            <h3>Product Development</h3>
+                            <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </div>
+                        <div class="step-content">
+                            <p>Develop a Minimum Viable Product (MVP) or prototype to bring your idea to life in its simplest form. Focus on core features that solve the primary problem, and gather feedback from early users. Product development is iterative; feedback helps refine the product and prepare it for full market release.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-header">
+                            <span class="step-number">05</span>
+                            <h3>Marketing and Brand Building</h3>
+                            <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </div>
+                        <div class="step-content">
+                            <p>Build a brand identity, including a logo, tagline, and brand voice that resonate with your audience. Develop a marketing strategy across social media, email, content marketing, and advertising. A pre-launch campaign builds anticipation, while ongoing marketing keeps your product visible and appealing to customers.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-header">
+                            <span class="step-number">06</span>
+                            <h3>Launch and Scale</h3>
+                            <svg class="expand-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </div>
+                        <div class="step-content">
+                            <p>Launch your product with a coordinated strategy, using press releases, digital marketing, and customer engagement efforts to gain traction. Post-launch, gather user feedback, refine your offerings, and start scaling. Expanding to new markets, improving customer support, and optimizing operations are key to sustainable growth.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="section-title">Contact Us</div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+
+        <footer>
+            <p>THANKS FOR VISITING</p>
+        </footer>
+    </div>
+
+    <script>
+        document.querySelectorAll('.process-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+<script>
+    // Function to open the popup
+function openPopup() {
+    document.getElementById("popup").style.visibility = "visible";
+    document.getElementById("popup").style.opacity = "1";
+}
+
+// Function to close the popup
+function closePopup() {
+    document.getElementById("popup").style.visibility = "hidden";
+    document.getElementById("popup").style.opacity = "0";
+}
+
+
+</script>
+<script>
+    let currentSlideIndex = 0;
+    let problemsData = [];
+
+    // Function to fetch and display problems in a slideshow
+    function showSlide(index) {
+            const slideshowContainer = document.getElementById('slideshow-container');
+            slideshowContainer.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        // Function to go to the previous slide in circular fashion
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex === 0) ? problemsData.length - 1 : currentSlideIndex - 1;
+            showSlide(currentSlideIndex);
+        }
+
+        // Function to go to the next slide in circular fashion
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % problemsData.length;
+            showSlide(currentSlideIndex);
+        }
+    function displayProblemShowoff() {
+        // Show loading spinner
+        document.getElementById('loading-spinner').style.display = 'block';
+
+        // Fetch data from the server
+        fetch('fetch_problems.php')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                problemsData = data;
+                const slideshowContainer = document.getElementById('slideshow-container');
+                const dotContainer = document.getElementById('dot-container');
+
+                if (problemsData.length === 0) {
+                    alert("No problems found.");
+                    document.getElementById('loading-spinner').style.display = 'none';
+                    return;
+                }
+
+                // Clear previous content
+                slideshowContainer.innerHTML = '';
+                dotContainer.innerHTML = '';
+
+                // Create the problem slides
+                problemsData.forEach((problem, index) => {
+                    const slideHtml = `
+                        <div class="problem-slide-gizmo">
+                            <p><strong>Market Type:</strong> ${problem.market_type}</p>
+                            <p><strong>Owner Name:</strong> ${problem.owner_name}</p>
+                            <p><strong>Problem:</strong> ${problem.problem}</p>
+                            <p><strong>Submitted At:</strong> ${problem.created_at}</p>
+                            <button onclick="contactTheOwner('${problem.owner_email}')">Contact Owner</button>
+                        </div>
+                    `;
+                    slideshowContainer.innerHTML += slideHtml;
+
+                    // Create dots for navigation
+                    const dot = document.createElement('span');
+                    dot.classList.add('dotty');
+                    dot.setAttribute('data-slide', index);
+                    dotContainer.appendChild(dot);
+                });
+
+                // Hide loading spinner
+                document.getElementById('loading-spinner').style.display = 'none';
+
+                // Show the popup
+                document.getElementById('popup-o-matic').style.display = 'block';
+
+                // Start the slideshow automatically
+                startAutoSlide();
+            })
+            .catch(error => {
+                console.error('Error fetching problems:', error);
+                alert("An error occurred while fetching problems. Please try again later");
+                document.getElementById('loading-spinner').style.display = 'none';
+            });
+    }
+
+    // Function to close the popup
+    function closeThePopup() {
+        document.getElementById('popup-o-matic').style.display = 'none';
+    }
+
+    // Function to show the next slide
+    function nextSlide() {
+        currentSlideIndex = (currentSlideIndex + 1) % problemsData.length;
+        showSlide(currentSlideIndex);
+    }
+
+    // Function to show the current slide
+    function showSlide(index) {
+        const slideshowContainer = document.getElementById('slideshow-container');
+        const dots = document.getElementsByClassName('dotty');
+        const totalSlides = problemsData.length;
+
+        // Shift the slides
+        slideshowContainer.style.transform = `translateX(-${index * 100}%)`;
+        slideshowContainer.style.opacity = '0';
+        setTimeout(() => {
+            slideshowContainer.style.opacity = '1';
+        }, 0);
+
+        // Update dots
+        Array.from(dots).forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+    }
+
+    // Automatically transition slides every 5 seconds
+    function startAutoSlide() {
+        setInterval(() => {
+            nextSlide();
+        }, 5000); // Change slide every 5 seconds
+    }
+
+    // Placeholder function to contact the problem owner
+    function contactTheOwner(email) {
+        window.location.href = `mailto:${email}`;
+    }
+
+</script>
+
+</body>
+
+</html>
