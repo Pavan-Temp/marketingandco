@@ -7,7 +7,7 @@ $pass = 'EMeGrOf0BiX1i2VxnhXP';
 
 try {
     // Create a new PDO instance
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Check if form data is set
