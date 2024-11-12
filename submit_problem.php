@@ -1,9 +1,9 @@
 <?php
 // Database configuration
-$host = 'localhost';
-$dbname = 'marketing';
-$username = 'root';
-$password = 'Dadi@6563';
+$host = 'btmv8drq0pardbdcjayg-mysql.services.clever-cloud.com'; 
+$db   = 'btmv8drq0pardbdcjayg'; 
+$user = 'u4izqf7ousho9omf';      
+$pass = 'EMeGrOf0BiX1i2VxnhXP';    
 
 try {
     // Create a new PDO instance
