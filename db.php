@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost'; 
-$db   = 'marketing'; 
-$user = 'root';      
-$pass = 'Dadi@6563';          
+$host = 'btmv8drq0pardbdcjayg-mysql.services.clever-cloud.com'; 
+$db   = 'btmv8drq0pardbdcjayg'; 
+$user = 'u4izqf7ousho9omf';      
+$pass = 'EMeGrOf0BiX1i2VxnhXP';          
 $charset = 'utf8mb4';
 
 // Set up the DSN (Data Source Name)
